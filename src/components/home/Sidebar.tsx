@@ -3,8 +3,9 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@heroicons/react/solid';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../providers/UserProvider';
 
 interface Props {
   isOpen: boolean;
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
+  const [user, setUser] = useContext(UserContext);
+
   const links = [
     {
       title: 'Notifikasi',
@@ -57,7 +60,9 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
         </div>
 
         <div className='ml-8'>
-          <h2 className='text-custom-blue font-semibold text-3xl'>Andy</h2>
+          <h2 className='text-custom-blue font-semibold text-3xl'>
+            {user.name}
+          </h2>
           <Link to='/' className='text-gray-50 text-lg'>
             Edit Profil
           </Link>
@@ -67,6 +72,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       <div className='grid grid-cols-1 gap-6 mt-10'>
         {links.map((link) => (
           <div
+            key={link.title}
             className='text-white text-xl pb-6 px-12 flex justify-between items-center'
             style={{ borderBottom: '1px solid #444' }}>
             <Link to={link.to}>{link.title}</Link>

@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    configAuth;
+    configAuth();
   }, []);
 
   const configAuth = async () => {
@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <main className='bg-gray-200 min-h-screen'>
+    <main className='bg-gray-200 md:min-h-screen'>
       <div className='max-w-md mx-auto'>
         <ToastContainer />
         <Outlet />

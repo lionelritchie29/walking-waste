@@ -1,8 +1,9 @@
 import { MenuIcon } from '@heroicons/react/solid';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import MainFeatureCard from '../components/home/MainFeatureCard';
 import Sidebar from '../components/home/Sidebar';
+import { USER_KEY } from '../constant';
 
 import dummyImg from '../images/dummy.jpg';
 import { UserContext } from '../providers/UserProvider';
@@ -12,6 +13,7 @@ interface Props {}
 const Index = (props: Props) => {
   const [user, setUser] = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const features = [
     {
@@ -41,7 +43,7 @@ const Index = (props: Props) => {
     <>
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       <section className='bg-custom-green pt-20'>
-        <div className='bg-white rounded-t-2xl px-4 pt-4 min-h-screen'>
+        <div className='bg-white rounded-t-2xl px-4 pt-4 h-full md:min-h-screen'>
           <div className='flex justify-between'>
             <MenuIcon
               onClick={() => {
