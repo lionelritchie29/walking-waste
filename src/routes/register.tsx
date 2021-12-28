@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 import { Else, If, Then } from 'react-if';
 import { useForm } from 'react-hook-form';
@@ -47,9 +47,15 @@ const Register = (props: Props) => {
   } = useForm<SecondFormData>();
 
   const [formData, setFormData] = useState<any>({});
-
   const password = useRef({});
   password.current = watch('password', '');
+
+  useEffect(() => {
+    console.log(user);
+    if (user) {
+      navigate('/');
+    }
+  }, []);
 
   const onFirstStepSubmit = handleSubmit(async (data) => {
     toast.info('Checking email...');
@@ -96,10 +102,6 @@ const Register = (props: Props) => {
       toast.error('Ups, error when registering...');
     }
   });
-
-  if (user) {
-    navigate('/');
-  }
 
   return (
     <section className='bg-custom-green h-screen w-full flex justify-center items-center relative'>

@@ -1,17 +1,15 @@
 import { MenuIcon } from '@heroicons/react/solid';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import MainFeatureCard from '../components/home/MainFeatureCard';
-import { USER_KEY } from '../constant';
-import { UserContext } from '../providers/UserProvider';
 
 import dummyImg from '../images/dummy.jpg';
+import { UserContext } from '../providers/UserProvider';
 
 interface Props {}
 
 const Index = (props: Props) => {
   const [user, setUser] = useContext(UserContext);
-  const navigate = useNavigate();
 
   const features = [
     {
@@ -37,17 +35,9 @@ const Index = (props: Props) => {
     },
   ];
 
-  useEffect(() => {
-    if (localStorage.getItem(USER_KEY)) {
-      setUser(JSON.parse(localStorage.getItem(USER_KEY)!));
-    } else {
-      navigate('/login');
-    }
-  }, []);
-
   return (
     <section className='bg-custom-green pt-20'>
-      <div className='bg-white rounded-t-2xl px-4 pt-4'>
+      <div className='bg-white rounded-t-2xl px-4 pt-4 min-h-screen'>
         <div className='flex justify-between'>
           <MenuIcon className='text-custom-green w-10 h-10' />
 

@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from '@heroicons/react/solid';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
@@ -24,6 +24,12 @@ const Login = (props: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, []);
 
   const onSubmit = handleSubmit(async ({ email, password }) => {
     toast.info('Logging you in...');
