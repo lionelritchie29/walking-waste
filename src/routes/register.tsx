@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 import { Else, If, Then } from 'react-if';
 import { useForm } from 'react-hook-form';
+import { User } from '../models/User';
+import { UsersService } from '../services/UsersService';
 
 interface Props {}
 
@@ -20,6 +22,7 @@ type SecondFormData = {
   ward: string;
   district: string;
   postal_code: string;
+  address_detail: string;
 };
 
 const Register = (props: Props) => {
@@ -37,15 +40,37 @@ const Register = (props: Props) => {
     formState: { errors: secondErrors },
   } = useForm<SecondFormData>();
 
+  const [formData, setFormData] = useState<any>({});
+
   const password = useRef({});
   password.current = watch('password', '');
 
   const onFirstStepSubmit = handleSubmit((data) => {
     setIsSecondStep(true);
+    setFormData(data);
   });
 
-  const onSecondStepSubmit = secondHandleSubmit((data: any) => {
-    console.log(data);
+  const onSecondStepSubmit = secondHandleSubmit(async (data) => {
+    const user: User = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      password: formData.password,
+      address: {
+        street: data.street,
+        rt: data.rt,
+        rw: data.rw,
+        ward: data.ward,
+        district: data.district,
+        postal_code: data.postal_code,
+        address_detail: data.address_detail,
+      },
+    };
+
+    const success = await UsersService.addUser(user);
+    if (success) {
+    } else {
+    }
   });
 
   return (
@@ -261,6 +286,7 @@ const Register = (props: Props) => {
                 type='text'
                 className='border border-gray-400 w-full mx-auto rounded-full px-3 py-2 text-gray-400'
                 placeholder='Keterangan sekitar alamat'
+                {...secondRegister('address_detail')}
               />
             </div>
 
