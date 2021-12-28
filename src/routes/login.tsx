@@ -26,13 +26,16 @@ const Login = (props: Props) => {
   } = useForm<FormData>();
 
   const onSubmit = handleSubmit(async ({ email, password }) => {
+    toast.info('Logging you in...');
     const user = await UsersService.validate(email, password);
     if (user) {
+      toast.dismiss();
       toast.success(`Welcome back, ${(user as User).name}`);
       localStorage.setItem(USER_KEY, JSON.stringify(user));
       await setUser(user);
       navigate('/');
     } else {
+      toast.dismiss();
       toast.error('Ups, wrong credentials...');
     }
   });
@@ -40,7 +43,7 @@ const Login = (props: Props) => {
   return (
     <section className='h-screen w-full flex justify-center items-center relative'>
       <form onSubmit={onSubmit} className='flex-grow mx-6'>
-        <h1 className='font-semibold mb-4 text-2xl text-green-800'>Halo!</h1>
+        <h1 className='font-semibold mb-4 text-2xl text-custom-green'>Halo!</h1>
 
         <div className='space-y-2'>
           <input
@@ -83,7 +86,7 @@ const Login = (props: Props) => {
 
         <button
           type='submit'
-          className='font-semibold text-3xl mt-4 text-green-800'>
+          className='font-semibold text-3xl mt-4 text-custom-green'>
           Masuk <ArrowRightIcon className='w-6 h-6 inline' />
         </button>
       </form>

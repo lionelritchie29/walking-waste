@@ -102,7 +102,7 @@ const Register = (props: Props) => {
   }
 
   return (
-    <section className='bg-green-800 h-screen w-full flex justify-center items-center relative'>
+    <section className='bg-custom-green h-screen w-full flex justify-center items-center relative'>
       <If condition={!isSecondStep}>
         <Then>
           <form onSubmit={onFirstStepSubmit} className='flex-grow mx-6'>
