@@ -1,9 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 import { Else, If, Then } from 'react-if';
 import { useForm } from 'react-hook-form';
 import { User } from '../models/User';
 import { UsersService } from '../services/UsersService';
+import { toast } from 'react-toastify';
+import { UserContext } from '../providers/UserProvider';
+import { useNavigate } from 'react-router';
+import { USER_KEY } from '../constant';
 
 interface Props {}
 
@@ -26,6 +30,8 @@ type SecondFormData = {
 };
 
 const Register = (props: Props) => {
+  const [user, setUser] = useContext(UserContext);
+  const navigate = useNavigate();
   const [isSecondStep, setIsSecondStep] = useState(false);
   const {
     register,
@@ -45,9 +51,19 @@ const Register = (props: Props) => {
   const password = useRef({});
   password.current = watch('password', '');
 
-  const onFirstStepSubmit = handleSubmit((data) => {
-    setIsSecondStep(true);
-    setFormData(data);
+  const onFirstStepSubmit = handleSubmit(async (data) => {
+    toast.info('Checking email...');
+
+    const isExist = await UsersService.checkExist(data.email);
+    if (isExist) {
+      toast.dismiss();
+      toast.error('Email already exists...');
+      return;
+    } else {
+      toast.dismiss();
+      setIsSecondStep(true);
+      setFormData(data);
+    }
   });
 
   const onSecondStepSubmit = secondHandleSubmit(async (data) => {
@@ -67,11 +83,23 @@ const Register = (props: Props) => {
       },
     };
 
+    toast.info('Processing your request, please wait...');
     const success = await UsersService.addUser(user);
     if (success) {
+      toast.dismiss();
+      toast.success('Register success!');
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+      await setUser(user);
+      navigate('/');
     } else {
+      toast.dismiss();
+      toast.error('Ups, error when registering...');
     }
   });
+
+  if (user) {
+    navigate('/');
+  }
 
   return (
     <section className='bg-green-800 h-screen w-full flex justify-center items-center relative'>

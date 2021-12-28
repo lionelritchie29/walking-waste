@@ -28,4 +28,43 @@ export class UsersService {
       return false;
     }
   }
+
+  public static async checkExist(email: string): Promise<boolean> {
+    try {
+      const { data: users }: AxiosResponse<User[]> = await axios.get(
+        this.API_URL,
+      );
+      if (users.some((u) => u.email === email)) {
+        return true;
+      }
+
+      return false;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  public static async validate(
+    email: string,
+    password: string,
+  ): Promise<User | boolean> {
+    const { data: users }: AxiosResponse<User[]> = await axios.get(
+      this.API_URL,
+    );
+    const user = users.find((u) => u.email === email);
+
+    if (user) {
+      const decryptedPass = AES.decrypt(
+        user.password,
+        this.APP_SECRET,
+      ).toString(enc.Utf8);
+      if (password === decryptedPass) {
+        return user;
+      } else {
+        return false;
+      }
+    }
+    return false;
+  }
 }
