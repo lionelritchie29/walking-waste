@@ -2,8 +2,7 @@ import { Outlet } from 'react-router';
 
 function App() {
   return (
-    <main>
-      <h1 className='bg-blue-500 text-red-500'>Hehe</h1>
+    <main className='max-w-3xl'>
       <Outlet />
     </main>
   );
