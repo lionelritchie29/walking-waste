@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 import { Else, If, Then } from 'react-if';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 interface Props {}
 
@@ -17,6 +17,7 @@ type SecondFormData = {
   street: string;
   rt: string;
   rw: string;
+  ward: string;
   district: string;
   postal_code: string;
 };
@@ -217,9 +218,23 @@ const Register = (props: Props) => {
               <input
                 type='text'
                 className='border border-gray-400 w-full mx-auto rounded-full px-3 py-2 text-gray-400'
+                placeholder='Kelurahan'
+                {...secondRegister('ward', {
+                  required: 'Kelurahan harus diisi',
+                })}
+              />
+              {secondErrors.ward && (
+                <small className='text-red-500 text-center ml-3'>
+                  {secondErrors.ward.message}
+                </small>
+              )}
+
+              <input
+                type='text'
+                className='border border-gray-400 w-full mx-auto rounded-full px-3 py-2 text-gray-400'
                 placeholder='Kecamatan'
                 {...secondRegister('district', {
-                  required: 'kecamatan harus diisi',
+                  required: 'Kecamatan harus diisi',
                 })}
               />
               {secondErrors.district && (
