@@ -61,7 +61,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
         <div className='ml-8'>
           <h2 className='text-custom-blue font-semibold text-3xl'>
-            {user.name}
+            {user?.name}
           </h2>
           <Link to='/' className='text-gray-50 text-lg'>
             Edit Profil
@@ -71,9 +71,8 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
       <div className='grid grid-cols-1 mt-10'>
         {links.map((link) => (
-          <Link to={link.to}>
+          <Link key={link.title} to={link.to}>
             <div
-              key={link.title}
               className='text-white text-xl py-6 px-12 flex justify-between items-center'
               style={{ borderBottom: '1px solid #444' }}>
               {link.title}
