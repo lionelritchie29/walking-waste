@@ -69,17 +69,19 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
         </div>
       </div>
 
-      <div className='grid grid-cols-1 gap-6 mt-10'>
+      <div className='grid grid-cols-1 mt-10'>
         {links.map((link) => (
-          <div
-            key={link.title}
-            className='text-white text-xl pb-6 px-12 flex justify-between items-center'
-            style={{ borderBottom: '1px solid #444' }}>
-            <Link to={link.to}>{link.title}</Link>
-            <div>
-              <ChevronRightIcon className='font-normal w-8 h-8' />
+          <Link to={link.to}>
+            <div
+              key={link.title}
+              className='text-white text-xl py-6 px-12 flex justify-between items-center'
+              style={{ borderBottom: '1px solid #444' }}>
+              {link.title}
+              <div>
+                <ChevronRightIcon className='font-normal w-8 h-8' />
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
