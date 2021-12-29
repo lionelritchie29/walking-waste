@@ -1,9 +1,17 @@
 import React, { useRef, useState } from 'react';
+
 import firstStepImg from '../images/step1.jpg';
 import secondStepImg from '../images/step2.jpg';
 import thirdStepImg from '../images/step3.jpg';
+
+import firstStepDetailImg from '../images/stepdetail1.png';
+import secondStepDetailImg from '../images/stepdetail2.png';
+import thirdStepDetailImg from '../images/stepdetail3.png';
+
 import Carousel from 'react-tiny-slider';
 import { Link } from 'react-router-dom';
+import DonationStep from '../components/donation-step/DonationStep';
+import DonationStepDetail from '../components/donation-step/DonationStepDetail';
 
 interface Props {}
 
@@ -11,28 +19,55 @@ const DonationStepPage = (props: Props) => {
   const carousel = useRef(null);
   const understandBtn = useRef(null);
   const dots = useRef(null);
-  const [currSlideIdx, setCurrSlideIdx] = useState(0);
 
   const steps = [
     {
+      index: 0,
       title: 'Sampah Plastik',
       color: '#f8ca67',
       desc: 'Mari pelajari cara menyortir sampah plastik dengan benar',
       image: firstStepImg,
+      detailImage: firstStepDetailImg,
+      details: [
+        'Mulai pilih sampah berbahan dasar plastik. Contohnya: botol plastik, kantong plastik, alat rumah tangga berbahan dasar plastik, dll',
+        'Pisahkan sampah plastik basah dan kering',
+        'Keringkan sampah plastik basah',
+        'Jika plastik berbentuk botol, maka diremukkan',
+        'Kumpulkan semua sampah plastik ke dalam wadah yang kering',
+      ],
     },
     {
+      index: 1,
       title: 'Sampah Beling',
       color: '#21d09e',
       desc: 'Mari pelajari cara menyortir sampah beling dengan benar',
       image: secondStepImg,
+      detailImage: secondStepDetailImg,
+      details: [
+        'Mulai pilih sampah berbahan dasar kaca/beling',
+        'Pisahkan sampah beling kering dan basah',
+        'Bersihkan noda yang tersisa pada sampah beling yang basah',
+        'Pastikan sampah beling sudah kering',
+        'Kumpulkan sampah beling kering dan basah dalam wadah yang sama (pastikan kuat menahan beling dalam jumlah yang banyak).',
+      ],
     },
     {
+      index: 2,
       title: 'Sampah Kertas',
       color: '#48dbfc',
       desc: 'Mari pelajari cara menyortir sampah kertas dengan benar',
       image: thirdStepImg,
+      detailImage: thirdStepDetailImg,
+      details: [
+        'Mulai pilih sampah berbahan dasar kertas. Contohnya: koran, majalah, kardus, karton, kertas pembungkus makanan',
+        'Lipat sampah berbentuk bangun ruang menjadi pipih. Contohnya: karton susu yang berbentuk balok perlu dilipat dan dipipihkan.',
+        'Kumpulkan dalam satu wadah/tempat yang kering.',
+      ],
     },
   ];
+
+  const [currStep, setCurrStep] = useState(steps[0]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const onSlideChanged = (idx: number) => {
     var node = dots as any;
@@ -47,46 +82,36 @@ const DonationStepPage = (props: Props) => {
 
   return (
     <div className='bg-white pt-6'>
+      <DonationStepDetail
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+        title={currStep.title}
+        image={currStep.detailImage}
+        steps={currStep.details}
+      />
+
       <div>
         <Carousel
           mouseDrag
           loop={false}
+          startIndex={currStep.index}
           ref={carousel}
           controls={false}
-          onTouchEnd={(info) => onSlideChanged(info.navCurrentIndex!)}>
+          onTouchEnd={(info) => onSlideChanged(info.navCurrentIndex!)}
+          onClick={(idx, info, event) => {
+            console.log(idx);
+            setCurrStep(steps[idx!]);
+            setIsOpen(true);
+          }}>
           {steps.map((step, idx) => (
-            <div>
-              <div
-                key={step.title}
-                className={`flex items-center ${
-                  idx % 2 === 0 ? 'flex-col' : 'flex-col-reverse'
-                }`}>
-                <div className='w-2/3 mx-auto'>
-                  <h1
-                    style={{ color: step.color }}
-                    className='font-bold text-3xl text-center'>
-                    {step.title}
-                  </h1>
-                  <p className='text-center mx-auto text-lg'>{step.desc}</p>
-
-                  <button
-                    className='font-bold mt-2 px-3 py-2 w-full rounded-full'
-                    style={{
-                      border: `4px solid ${step.color}`,
-                      color: step.color,
-                    }}>
-                    Mulai Sekarang
-                  </button>
-                </div>
-
-                <div
-                  className={`w-11/12 mx-auto ${
-                    idx % 2 === 0 ? 'mt-16' : 'mb-16'
-                  }`}>
-                  <img src={step.image} className='w-full' alt={step.title} />
-                </div>
-              </div>
-            </div>
+            <DonationStep
+              key={step.title}
+              title={step.title}
+              desc={step.desc}
+              image={step.image}
+              color={step.color}
+              idx={idx}
+            />
           ))}
         </Carousel>
 
@@ -94,14 +119,19 @@ const DonationStepPage = (props: Props) => {
           {steps.map((step, idx) => (
             <span
               key={step.title}
-              className={`block mr-1 w-2 h-2 rounded-full bg-gray-300`}></span>
+              className={`block mr-1 w-2 h-2 rounded-full bg-gray-300`}
+              style={{
+                background:
+                  steps[idx].title === currStep.title ? currStep.color : '#ccc',
+              }}></span>
           ))}
         </div>
 
         <Link to='/' className='flex justify-center w-2/3 mx-auto mt-6'>
           <button
             ref={understandBtn}
-            className='rounded-full px-4 py-2 w-full font-bold text-white'>
+            className='rounded-full px-4 py-2 w-full font-bold text-white'
+            style={{ background: currStep.color }}>
             Saya paham
           </button>
         </Link>
