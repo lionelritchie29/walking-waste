@@ -30,7 +30,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     },
     {
       title: 'Riwayat',
-      to: '/',
+      to: '/history',
     },
     {
       title: 'Pusat Bantuan',
