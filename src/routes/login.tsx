@@ -15,7 +15,7 @@ type FormData = {
   password: string;
 };
 
-const Login = (props: Props) => {
+const LoginPage = (props: Props) => {
   const navigate = useNavigate();
   const [user, setUser] = useContext(UserContext);
 
@@ -100,4 +100,4 @@ const Login = (props: Props) => {
   );
 };
 
-export default Login;
+export default LoginPage;

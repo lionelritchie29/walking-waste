@@ -10,10 +10,30 @@
   color: #226d5e;
 }
 
+.text-custom-green2 {
+  color: #5da795;
+}
+
 .text-custom-blue {
   color: #58dcfb;
 }
 
+.text-custom-blue-2 {
+  color: #b6ecf8;
+}
+
+.bg-custom-blue {
+  background: #58dcfb;
+}
+
 .bg-custom-blue-2 {
   background: #abf4ff;
+}
+
+.bg-custom-blue-3 {
+  background: #b6ecf8;
+}
+
+.bg-custom-gray {
+  background: #e8e6e7;
 }

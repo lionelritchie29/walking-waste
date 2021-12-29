@@ -29,7 +29,7 @@ type SecondFormData = {
   address_detail: string;
 };
 
-const Register = (props: Props) => {
+const RegisterPage = (props: Props) => {
   const [user, setUser] = useContext(UserContext);
   const navigate = useNavigate();
   const [isSecondStep, setIsSecondStep] = useState(false);
@@ -332,4 +332,4 @@ const Register = (props: Props) => {
   );
 };
 
-export default Register;
+export default RegisterPage;

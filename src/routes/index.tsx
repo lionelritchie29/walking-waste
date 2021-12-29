@@ -10,7 +10,7 @@ import { UserContext } from '../providers/UserProvider';
 
 interface Props {}
 
-const Index = (props: Props) => {
+const HomePage = (props: Props) => {
   const [user, setUser] = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -76,4 +76,4 @@ const Index = (props: Props) => {
   );
 };
 
-export default Index;
+export default HomePage;

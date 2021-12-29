@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Register from './routes/register';
+import RegisterPage from './routes/register';
 import UserProvider from './providers/UserProvider';
-import Login from './routes/login';
-import Index from './routes';
+import LoginPage from './routes/login';
+import HomePage from './routes';
+import RewardPage from './routes/rewards';
+import MyRewardsPage from './routes/rewards/my';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,9 +16,13 @@ ReactDOM.render(
       <UserProvider>
         <Routes>
           <Route path='/' element={<App />}>
-            <Route index element={<Index />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
+            <Route index element={<HomePage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/login' element={<LoginPage />} />
+
+            <Route path='/rewards' element={<RewardPage />} />
+            <Route path='/rewards/my' element={<MyRewardsPage />} />
+
             <Route
               path='*'
               element={

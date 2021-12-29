@@ -22,7 +22,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     },
     {
       title: 'Point and Reward',
-      to: '/',
+      to: '/rewards',
     },
     {
       title: 'Alamat Tersimpan',
@@ -59,7 +59,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           />
         </div>
 
-        <div className='ml-8'>
+        <div className='ml-4'>
           <h2 className='text-custom-blue font-semibold text-3xl'>
             {user?.name}
           </h2>
