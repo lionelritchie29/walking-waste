@@ -11,6 +11,7 @@ import RewardPage from './routes/rewards';
 import MyRewardsPage from './routes/rewards/my';
 import SavedAddressPage from './routes/saved-address';
 import HistoryPage from './routes/history';
+import HelpCenterPage from './routes/help-center';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +28,7 @@ ReactDOM.render(
 
             <Route path='/saved-address' element={<SavedAddressPage />} />
             <Route path='/history' element={<HistoryPage />} />
+            <Route path='/help-center' element={<HelpCenterPage />} />
 
             <Route
               path='*'
