@@ -3,11 +3,13 @@ import firstStepImg from '../images/step1.jpg';
 import secondStepImg from '../images/step2.jpg';
 import thirdStepImg from '../images/step3.jpg';
 import Carousel from 'react-tiny-slider';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
 const DonationStepPage = (props: Props) => {
   const carousel = useRef(null);
+  const understandBtn = useRef(null);
   const dots = useRef(null);
   const [currSlideIdx, setCurrSlideIdx] = useState(0);
 
@@ -40,13 +42,15 @@ const DonationStepPage = (props: Props) => {
     }
 
     node.current.childNodes[idx].style.background = steps[idx].color;
+    (understandBtn as any).current.style.background = steps[idx].color;
   };
 
   return (
-    <div className='bg-white min-h-screen pt-6'>
+    <div className='bg-white pt-6'>
       <div>
         <Carousel
           mouseDrag
+          loop={false}
           ref={carousel}
           controls={false}
           onTouchEnd={(info) => onSlideChanged(info.navCurrentIndex!)}>
@@ -93,6 +97,14 @@ const DonationStepPage = (props: Props) => {
               className={`block mr-1 w-2 h-2 rounded-full bg-gray-300`}></span>
           ))}
         </div>
+
+        <Link to='/' className='flex justify-center w-2/3 mx-auto mt-6'>
+          <button
+            ref={understandBtn}
+            className='rounded-full px-4 py-2 w-full font-bold text-white'>
+            Saya paham
+          </button>
+        </Link>
       </div>
     </div>
   );
