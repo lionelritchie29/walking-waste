@@ -51,31 +51,36 @@ const DonationStepPage = (props: Props) => {
           controls={false}
           onTouchEnd={(info) => onSlideChanged(info.navCurrentIndex!)}>
           {steps.map((step, idx) => (
-            <div
-              key={step.title}
-              className={`flex items-center ${
-                idx % 2 === 0 ? 'flex-col' : 'flex-col-reverse'
-              }`}>
-              <div className='w-2/3 mx-auto'>
-                <h1
-                  style={{ color: step.color }}
-                  className='font-bold text-3xl text-center'>
-                  {step.title}
-                </h1>
-                <p className='text-center mx-auto text-lg'>{step.desc}</p>
+            <div>
+              <div
+                key={step.title}
+                className={`flex items-center ${
+                  idx % 2 === 0 ? 'flex-col' : 'flex-col-reverse'
+                }`}>
+                <div className='w-2/3 mx-auto'>
+                  <h1
+                    style={{ color: step.color }}
+                    className='font-bold text-3xl text-center'>
+                    {step.title}
+                  </h1>
+                  <p className='text-center mx-auto text-lg'>{step.desc}</p>
 
-                <button
-                  className='font-bold mt-2 px-3 py-2 w-full rounded-full'
-                  style={{
-                    border: `4px solid ${step.color}`,
-                    color: step.color,
-                  }}>
-                  Mulai Sekarang
-                </button>
-              </div>
+                  <button
+                    className='font-bold mt-2 px-3 py-2 w-full rounded-full'
+                    style={{
+                      border: `4px solid ${step.color}`,
+                      color: step.color,
+                    }}>
+                    Mulai Sekarang
+                  </button>
+                </div>
 
-              <div className='w-11/12 mx-auto mt-16'>
-                <img src={step.image} className='w-full' alt={step.title} />
+                <div
+                  className={`w-11/12 mx-auto ${
+                    idx % 2 === 0 ? 'mt-16' : 'mb-16'
+                  }`}>
+                  <img src={step.image} className='w-full' alt={step.title} />
+                </div>
               </div>
             </div>
           ))}
