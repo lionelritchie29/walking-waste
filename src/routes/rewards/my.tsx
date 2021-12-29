@@ -48,7 +48,7 @@ const MyRewardsPage = (props: Props) => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   return (
-    <div className='bg-white px-6 pt-12 pb-6'>
+    <div className='bg-white px-6 pt-8 pb-6'>
       <div className='flex justify-between'>
         <button>
           <ChevronLeftIcon

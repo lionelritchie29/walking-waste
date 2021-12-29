@@ -9,6 +9,7 @@ import LoginPage from './routes/login';
 import HomePage from './routes';
 import RewardPage from './routes/rewards';
 import MyRewardsPage from './routes/rewards/my';
+import SavedAddressPage from './routes/saved-address';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +23,8 @@ ReactDOM.render(
 
             <Route path='/rewards' element={<RewardPage />} />
             <Route path='/rewards/my' element={<MyRewardsPage />} />
+
+            <Route path='/saved-address' element={<SavedAddressPage />} />
 
             <Route
               path='*'

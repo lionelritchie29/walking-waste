@@ -26,7 +26,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     },
     {
       title: 'Alamat Tersimpan',
-      to: '/',
+      to: '/saved-address',
     },
     {
       title: 'Riwayat',
