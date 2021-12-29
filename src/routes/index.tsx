@@ -27,7 +27,9 @@ const HomePage = (props: Props) => {
       title: 'Langkah',
       desc: 'Bagaimana cara memilah sampah yang benar?',
       buttonText: 'Pelajari Caranya',
-      buttonAction: () => {},
+      buttonAction: () => {
+        navigate('/donation-step');
+      },
       image: dummyImg,
     },
     {

@@ -24,7 +24,9 @@ const MainFeatureCard: React.FC<Props> = ({
       <div className='w-2/3'>
         <h2 className='text-3xl text-custom-blue font-bold'>{title}</h2>
         <p className='text-black font-semibold'>{desc}</p>
-        <button className='-ml-2 bg-custom-blue-2 rounded-full uppercase text-xs mt-1 px-4 py-3 text-gray-900 font-bold'>
+        <button
+          onClick={buttonAction}
+          className='-ml-2 bg-custom-blue-2 rounded-full uppercase text-xs mt-1 px-4 py-3 text-gray-900 font-bold'>
           {buttonText}
         </button>
       </div>
