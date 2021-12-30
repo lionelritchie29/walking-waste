@@ -6,6 +6,16 @@
   font-family: Calibri, sans-serif;
 }
 
+.mapouter {
+  position: relative;
+  text-align: right;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+}
+
 .bg-custom-green {
   background: #226d5e;
 }

@@ -138,7 +138,9 @@ const DonatePage = (props: Props) => {
       </div>
 
       <div className='text-center mt-12'>
-        <button className='bg-white px-8 py-2 rounded-xl text-xl font-extrabold border border-black'>
+        <button
+          onClick={() => navigate('/donate/active')}
+          className='bg-white px-8 py-2 rounded-xl text-xl font-extrabold border border-black'>
           Konfirmasi
         </button>
       </div>
