@@ -5,7 +5,9 @@ import MainFeatureCard from '../components/home/MainFeatureCard';
 import Sidebar from '../components/home/Sidebar';
 import { USER_KEY } from '../constant';
 
-import dummyImg from '../images/dummy.jpg';
+import HomeTopImg from '../images/home-top.png';
+import HomeBottomImg from '../images/home-bottom.png';
+import HomeMiddleImg from '../images/home-middle.png';
 import { UserContext } from '../providers/UserProvider';
 
 interface Props {}
@@ -23,7 +25,7 @@ const HomePage = (props: Props) => {
       buttonAction: () => {
         navigate('/donate');
       },
-      image: dummyImg,
+      image: HomeTopImg,
     },
     {
       title: 'Langkah',
@@ -32,7 +34,7 @@ const HomePage = (props: Props) => {
       buttonAction: () => {
         navigate('/donation-step');
       },
-      image: dummyImg,
+      image: HomeMiddleImg,
     },
     {
       title: 'Manfaat',
@@ -41,7 +43,7 @@ const HomePage = (props: Props) => {
       buttonAction: () => {
         navigate('/articles');
       },
-      image: dummyImg,
+      image: HomeBottomImg,
     },
   ];
 

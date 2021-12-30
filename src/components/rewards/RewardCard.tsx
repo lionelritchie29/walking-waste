@@ -12,10 +12,10 @@ const RewardCard = ({ title, desc, image, active }: Props) => {
     <div>
       <div className='flex bg-custom-gray px-4 py-2 rounded-xl'>
         <div className='w-1/3 flex items-center'>
-          <img src={image} className='w-full' alt='' />
+          <img src={image} className='w-full h-24 object-contain' alt='' />
         </div>
 
-        <div className='w-2/3 ml-4'>
+        <div className='w-2/3 ml-4 flex flex-col items-center justify-center'>
           <h3 className='text-lg font-bold'>{title}</h3>
           <p
             className={`text-gray-600 text-sm font-semibold mt-1 ${

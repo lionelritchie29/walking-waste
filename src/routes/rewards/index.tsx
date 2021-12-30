@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import dummyOneImg from '../../images/dummy1.jpg';
-import bobaImg from '../../images/boba.png';
+import BurgerImg from '../../images/burger.png';
+import TasImg from '../../images/tas.png';
+import PesawatImg from '../../images/pesawat.png';
+import bobaImg from '../../images/boba2.png';
 import { ChevronLeftIcon } from '@heroicons/react/solid';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,17 +15,17 @@ const RewardPage = (props: Props) => {
   const rewards = [
     {
       title: 'Makanan dan Minuman',
-      image: dummyOneImg,
+      image: BurgerImg,
       to: '/rewards/my',
     },
     {
       title: 'Wisata',
-      image: dummyOneImg,
+      image: PesawatImg,
       to: '/rewards/my',
     },
     {
       title: 'Belanja',
-      image: dummyOneImg,
+      image: TasImg,
       to: '/rewards/my',
     },
   ];
@@ -57,7 +59,7 @@ const RewardPage = (props: Props) => {
             <div key={r.title}>
               <Link to={r.to} className='block'>
                 <div className='p-4 bg-custom-gray rounded-lg'>
-                  <img src={dummyOneImg} className='w-full' alt={r.title} />
+                  <img src={r.image} className='w-full' alt={r.title} />
                 </div>
               </Link>
               <h3 className='font-bold text-base text-center text-custom-green'>

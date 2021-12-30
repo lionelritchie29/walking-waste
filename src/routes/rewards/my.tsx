@@ -2,7 +2,9 @@ import { ChevronLeftIcon } from '@heroicons/react/solid';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import RewardCard from '../../components/rewards/RewardCard';
-import dummyOneImg from '../../images/dummy1.jpg';
+import BurgerImg from '../../images/burger.png';
+import TasImg from '../../images/tas.png';
+import PesawatImg from '../../images/pesawat.png';
 
 interface Props {}
 
@@ -23,25 +25,25 @@ const MyRewardsPage = (props: Props) => {
       title: 'Potongan belanja 20% di Rishoes shop',
       desc: 'Berlaku sampai 25 Februari 2022',
       active: true,
-      image: dummyOneImg,
+      image: TasImg,
     },
     {
       title: 'Gratis 1 gelas Kopi Jiwa',
       desc: 'Berlaku sampai 3 Maret 2022',
       active: true,
-      image: dummyOneImg,
+      image: BurgerImg,
     },
     {
       title: 'Cashback 50% LikaShop',
       desc: 'Berlaku sampai 11 April 2022',
       active: true,
-      image: dummyOneImg,
+      image: TasImg,
     },
     {
       title: 'Potongan Tiket 20% Dunia Land',
       desc: 'Kadaluwarsa',
       active: false,
-      image: dummyOneImg,
+      image: PesawatImg,
     },
   ];
 
