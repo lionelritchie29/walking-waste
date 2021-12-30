@@ -36,7 +36,7 @@ ReactDOM.render(
             <Route path='/donate/done' element={<DonateDonePage />} />
 
             <Route path='/articles' element={<ArticlePage />} />
-            <Route path='/articles/detail' element={<ArticleDetailPage />} />
+            <Route path='/articles/:slug' element={<ArticleDetailPage />} />
 
             <Route path='/rewards' element={<RewardPage />} />
             <Route path='/rewards/my' element={<MyRewardsPage />} />

@@ -1,6 +1,7 @@
 import { ArrowLeftIcon } from '@heroicons/react/solid';
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import Carousel from 'react-tiny-slider';
 
 import ArticleOneImg from '../../images/article1.png';
@@ -17,6 +18,7 @@ const ArticlePage = (props: Props) => {
 
   const articles = [
     {
+      slug: 'pentingnya-memilah-sampah',
       title: 'Pentingnya memilah sampah',
       writer: 'Walking Waste Team',
       time: '10 minggu lalu',
@@ -26,6 +28,7 @@ const ArticlePage = (props: Props) => {
       image: ArticleOneImg,
     },
     {
+      slug: 'bahaya-membuang-sampah',
       title: 'Bahaya membuang sampah',
       writer: 'Walking Waste Team',
       time: '9 minggu lalu',
@@ -35,6 +38,7 @@ const ArticlePage = (props: Props) => {
       image: ArticleTwoImg,
     },
     {
+      slug: 'dampak-penumpukan-sampah',
       title: 'Dampak penumpukan sampah',
       writer: 'Walking Waste Team',
       time: '5 menit lalu',
@@ -44,6 +48,7 @@ const ArticlePage = (props: Props) => {
       image: ArticleThreeImg,
     },
     {
+      slug: 'manfaat-memilah-sampah',
       title: 'Manfaat memilah sampah',
       writer: 'Walking Waste Team',
       time: '15 menit lalu',
@@ -77,11 +82,14 @@ const ArticlePage = (props: Props) => {
             mouseDrag
             gutter={20}
             edgePadding={20}
-            fixedWidth={250}>
+            fixedWidth={250}
+            onClick={(idx, info, event) => {
+              navigate(`/articles/${articles[info.displayIndex - 1].slug}`);
+            }}>
             {articles
               .filter((a) => a.populer)
               .map((article) => (
-                <div>
+                <div key={article.slug}>
                   <div
                     className='p-4 rounded-2xl'
                     style={{ background: '#90C6B9' }}>
@@ -115,7 +123,7 @@ const ArticlePage = (props: Props) => {
           {articles
             .filter((a) => !a.populer)
             .map((a) => (
-              <div className='flex'>
+              <Link key={a.slug} to={`/articles/${a.slug}`} className='flex'>
                 <div
                   style={{ background: '#FDF8E8' }}
                   className='p-2 rounded-2xl'>
@@ -133,7 +141,7 @@ const ArticlePage = (props: Props) => {
                     <span className='block'>{a.time}</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
         </div>
       </div>
