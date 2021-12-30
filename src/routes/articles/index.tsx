@@ -56,17 +56,19 @@ const ArticlePage = (props: Props) => {
 
   return (
     <div className='min-h-screen pb-6' style={{ background: '#236D5E' }}>
-      <div className='pt-8 px-6 bg-white'>
-        <button>
-          <ArrowLeftIcon
-            onClick={() => {
-              navigate('/donate');
-            }}
-            className='cursor w-10 h-10'
-          />
-        </button>
+      <div className='pt-8 bg-white'>
+        <div className='px-6'>
+          <button>
+            <ArrowLeftIcon
+              onClick={() => {
+                navigate('/');
+              }}
+              className='cursor w-10 h-10'
+            />
+          </button>
+        </div>
 
-        <h1 className='font-bold text-4xl mt-4'>Populer</h1>
+        <h1 className='font-bold text-4xl mt-4 px-6'>Populer</h1>
         <div>
           <Carousel
             ref={carousel}
@@ -74,6 +76,7 @@ const ArticlePage = (props: Props) => {
             loop={false}
             mouseDrag
             gutter={20}
+            edgePadding={20}
             fixedWidth={250}>
             {articles
               .filter((a) => a.populer)
