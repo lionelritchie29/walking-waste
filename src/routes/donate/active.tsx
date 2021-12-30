@@ -1,8 +1,8 @@
 import { ChevronLeftIcon } from '@heroicons/react/solid';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
-import DriverImg from '../../images/driver_dummy.jpg';
+import DriverImg from '../../images/driver_dummy.png';
 import ChatImg from '../../images/chat_dummy.jpg';
 import PhoneImg from '../../images/phone_dummy.jpg';
 
@@ -10,6 +10,12 @@ interface Props {}
 
 const DonateActivePage = (props: Props) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/donate/done');
+    }, 5000);
+  }, []);
 
   return (
     <div className='min-h-screen pb-6' style={{ background: '#E7FAF8' }}>
