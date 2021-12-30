@@ -1,0 +1,26 @@
+{
+  "name": "Walking Waste",
+  "short_name": "Walking Waste",
+  "icons": [
+    {
+      "src": "/src/images/logo.png",
+      "sizes": "92x92",
+      "type": "image/png"
+    },
+    {
+      "src": "/src/images/logo.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/src/images/logo.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
