@@ -20,7 +20,9 @@ const HomePage = (props: Props) => {
       title: 'Donasi',
       desc: 'Pisahkan, bungkus, dan donasikan sampah',
       buttonText: 'Donasikan Sampah',
-      buttonAction: () => {},
+      buttonAction: () => {
+        navigate('/donate');
+      },
       image: dummyImg,
     },
     {

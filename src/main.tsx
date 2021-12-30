@@ -13,6 +13,7 @@ import SavedAddressPage from './routes/saved-address';
 import HistoryPage from './routes/history';
 import HelpCenterPage from './routes/help-center';
 import DonationStepPage from './routes/donation-step';
+import DonatePage from './routes/donate';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +26,8 @@ ReactDOM.render(
             <Route path='/login' element={<LoginPage />} />
 
             <Route path='/donation-step' element={<DonationStepPage />} />
+
+            <Route path='/donate' element={<DonatePage />} />
 
             <Route path='/rewards' element={<RewardPage />} />
             <Route path='/rewards/my' element={<MyRewardsPage />} />

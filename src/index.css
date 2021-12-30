@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: Calibri, sans-serif;
+}
+
 .bg-custom-green {
   background: #226d5e;
 }

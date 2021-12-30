@@ -99,7 +99,6 @@ const DonationStepPage = (props: Props) => {
           controls={false}
           onTouchEnd={(info) => onSlideChanged(info.navCurrentIndex!)}
           onClick={(idx, info, event) => {
-            console.log(idx);
             setCurrStep(steps[idx!]);
             setIsOpen(true);
           }}>
