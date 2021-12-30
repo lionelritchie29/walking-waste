@@ -30,7 +30,6 @@ function App() {
   return (
     <main className='bg-gray-200 md:min-h-screen'>
       <div className='max-w-md mx-auto'>
-        <ToastContainer />
         <Outlet />
       </div>
     </main>

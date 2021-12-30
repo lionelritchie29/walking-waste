@@ -83,6 +83,7 @@ const MyRewardsPage = (props: Props) => {
             (r) =>
               r.active && (
                 <RewardCard
+                  key={r.title}
                   active={r.active}
                   title={r.title}
                   desc={r.desc}
@@ -96,6 +97,7 @@ const MyRewardsPage = (props: Props) => {
             (r) =>
               !r.active && (
                 <RewardCard
+                  key={r.title}
                   active={r.active}
                   title={r.title}
                   desc={r.desc}

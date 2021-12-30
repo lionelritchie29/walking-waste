@@ -54,7 +54,7 @@ const RewardPage = (props: Props) => {
       <div className='flex'>
         <div className='w-1/2 border-r border-gray-900 grid grid-cols-1 gap-y-8 px-4 py-8'>
           {rewards.map((r) => (
-            <div>
+            <div key={r.title}>
               <Link to={r.to} className='block'>
                 <div className='p-4 bg-custom-gray rounded-lg'>
                   <img src={dummyOneImg} className='w-full' alt={r.title} />

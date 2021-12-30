@@ -7,6 +7,8 @@ import { USER_KEY } from '../constant';
 import { User } from '../models/User';
 import { UserContext } from '../providers/UserProvider';
 import { UsersService } from '../services/UsersService';
+import LoginBg from '../images/login_bg.jpg';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
@@ -47,7 +49,9 @@ const LoginPage = (props: Props) => {
   });
 
   return (
-    <section className='h-screen w-full flex justify-center items-center relative'>
+    <section
+      className='h-screen w-full flex justify-center items-center relative'
+      style={{ backgroundImage: `url(${LoginBg})`, backgroundSize: 'cover' }}>
       <form onSubmit={onSubmit} className='flex-grow mx-6'>
         <h1 className='font-semibold mb-4 text-2xl text-custom-green'>Halo!</h1>
 
@@ -92,10 +96,17 @@ const LoginPage = (props: Props) => {
 
         <button
           type='submit'
-          className='font-semibold text-3xl mt-4 text-custom-green'>
+          className='font-semibold text-3xl mt-2 text-custom-green'>
           Masuk <ArrowRightIcon className='w-6 h-6 inline' />
         </button>
       </form>
+
+      <div className='absolute bottom-0 left-0 text-white px-4 pb-10'>
+        <span className='block text-gray-100'>Belum punya akun?</span>
+        <Link className='text-2xl underline -mt-2 block' to='/register'>
+          Daftar
+        </Link>
+      </div>
     </section>
   );
 };

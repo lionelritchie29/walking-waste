@@ -11,7 +11,7 @@ const DonateDonePage = (props: Props) => {
   const [date, setDate] = useState(new Date());
 
   const getMonthName = (month: number) => {
-    switch (month) {
+    switch (month + 1) {
       case 1:
         return 'January';
       case 2:

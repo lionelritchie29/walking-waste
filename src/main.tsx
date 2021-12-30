@@ -18,16 +18,16 @@ import DonateActivePage from './routes/donate/active';
 import DonateDonePage from './routes/donate/done';
 import ArticlePage from './routes/articles';
 import ArticleDetailPage from './routes/articles/detail';
+import { ToastContainer } from 'react-toastify';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
+        <ToastContainer />
         <Routes>
           <Route path='/' element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
 
             <Route path='/donation-step' element={<DonationStepPage />} />
 
@@ -53,6 +53,8 @@ ReactDOM.render(
                 </main>
               }
             />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/login' element={<LoginPage />} />
           </Route>
         </Routes>
       </UserProvider>

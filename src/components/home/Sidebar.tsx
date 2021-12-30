@@ -5,7 +5,9 @@ import {
 } from '@heroicons/react/solid';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { USER_KEY } from '../../constant';
 import { UserContext } from '../../providers/UserProvider';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   isOpen: boolean;
@@ -14,6 +16,7 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   const [user, setUser] = useContext(UserContext);
+  const navigate = useNavigate();
 
   const links = [
     {
@@ -82,6 +85,18 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
             </div>
           </Link>
         ))}
+      </div>
+
+      <div className='mt-4 text-center'>
+        <button
+          onClick={() => {
+            navigate('/login');
+            localStorage.removeItem(USER_KEY);
+            setUser(null);
+          }}
+          className='bg-red-500 text-white w-3/4 hover:bg-red-600 px-4 py-2 rounded-full'>
+          Logout
+        </button>
       </div>
     </div>
   );

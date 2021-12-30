@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 import { UserContext } from '../providers/UserProvider';
 import { useNavigate } from 'react-router';
 import { USER_KEY } from '../constant';
+import RegisterBg from '../images/signup_bg.png';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
@@ -40,6 +42,9 @@ const RegisterPage = (props: Props) => {
     formState: { errors },
   } = useForm<FormData>();
 
+  const firstStepBtn = useRef(null);
+  const secondStepBtn = useRef(null);
+
   const {
     register: secondRegister,
     handleSubmit: secondHandleSubmit,
@@ -59,20 +64,24 @@ const RegisterPage = (props: Props) => {
 
   const onFirstStepSubmit = handleSubmit(async (data) => {
     toast.info('Checking email...');
+    (firstStepBtn!.current! as any).disabled = true;
 
     const isExist = await UsersService.checkExist(data.email);
     if (isExist) {
       toast.dismiss();
       toast.error('Email already exists...');
+      (firstStepBtn!.current! as any).disabled = false;
       return;
     } else {
       toast.dismiss();
       setIsSecondStep(true);
       setFormData(data);
+      (firstStepBtn!.current! as any).disabled = false;
     }
   });
 
   const onSecondStepSubmit = secondHandleSubmit(async (data) => {
+    (secondStepBtn!.current! as any).disabled = true;
     const user: User = {
       name: formData.name,
       email: formData.email,
@@ -101,10 +110,16 @@ const RegisterPage = (props: Props) => {
       toast.dismiss();
       toast.error('Ups, error when registering...');
     }
+    (secondStepBtn!.current! as any).disabled = false;
   });
 
   return (
-    <section className='bg-custom-green h-screen w-full flex justify-center items-center relative'>
+    <section
+      className='bg-custom-green h-screen w-full flex justify-center items-center relative'
+      style={{
+        backgroundImage: `url(${RegisterBg})`,
+        backgroundSize: 'cover',
+      }}>
       <If condition={!isSecondStep}>
         <Then>
           <form onSubmit={onFirstStepSubmit} className='flex-grow mx-6'>
@@ -210,6 +225,7 @@ const RegisterPage = (props: Props) => {
 
             <button
               type='submit'
+              ref={firstStepBtn}
               className='text-white font-semibold text-2xl ml-5 mt-4'>
               Selanjutnya <ArrowRightIcon className='w-6 h-6 inline' />
             </button>
@@ -321,6 +337,7 @@ const RegisterPage = (props: Props) => {
             </div>
 
             <button
+              ref={secondStepBtn}
               onClick={onSecondStepSubmit}
               className='text-white font-semibold text-2xl ml-5 mt-4'>
               Daftar <ArrowRightIcon className='w-6 h-6 inline' />
@@ -328,6 +345,13 @@ const RegisterPage = (props: Props) => {
           </form>
         </Else>
       </If>
+
+      <div className='absolute bottom-0 left-0 text-gray-800 px-4 pb-10'>
+        <span className='block '>Suda punya akun?</span>
+        <Link className='text-2xl underline -mt-2 block' to='/login'>
+          Masuk
+        </Link>
+      </div>
     </section>
   );
 };
