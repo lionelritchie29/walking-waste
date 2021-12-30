@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, XIcon } from '@heroicons/react/solid';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import DonateDoneFooterImg from '../../images/donate_done_footer.jpg';
 import DriverImg from '../../images/driver_dummy.png';
@@ -8,6 +8,36 @@ interface Props {}
 
 const DonateDonePage = (props: Props) => {
   const navigate = useNavigate();
+  const [date, setDate] = useState(new Date());
+
+  const getMonthName = (month: number) => {
+    switch (month) {
+      case 1:
+        return 'January';
+      case 2:
+        return 'February';
+      case 3:
+        return 'March';
+      case 4:
+        return 'April';
+      case 5:
+        return 'May';
+      case 6:
+        return 'June';
+      case 7:
+        return 'July';
+      case 8:
+        return 'August';
+      case 9:
+        return 'September';
+      case 10:
+        return 'October';
+      case 11:
+        return 'November';
+      case 12:
+        return 'December';
+    }
+  };
 
   return (
     <div className='min-h-screen pb-6 bg-custom-dark'>
@@ -23,7 +53,15 @@ const DonateDonePage = (props: Props) => {
           </button>
         </div>
 
-        <div className='text-center text-lg'>17.00 PM, 20 December 2020</div>
+        <div className='text-center text-lg'>
+          {date.toLocaleString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+          })}
+          , {date.getDate()} {getMonthName(date.getMonth())}{' '}
+          {date.getFullYear()}
+        </div>
 
         <div className='flex justify-center items-center mt-2'>
           <div className='rounded-full w-4 h-4 bg-gray-400'></div>

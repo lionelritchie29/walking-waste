@@ -14,7 +14,7 @@ const DonateActivePage = (props: Props) => {
   useEffect(() => {
     setTimeout(() => {
       navigate('/donate/done');
-    }, 5000);
+    }, 8000);
   }, []);
 
   return (

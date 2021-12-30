@@ -16,6 +16,8 @@ import DonationStepPage from './routes/donation-step';
 import DonatePage from './routes/donate';
 import DonateActivePage from './routes/donate/active';
 import DonateDonePage from './routes/donate/done';
+import ArticlePage from './routes/articles';
+import ArticleDetailPage from './routes/articles/detail';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -32,6 +34,9 @@ ReactDOM.render(
             <Route path='/donate' element={<DonatePage />} />
             <Route path='/donate/active' element={<DonateActivePage />} />
             <Route path='/donate/done' element={<DonateDonePage />} />
+
+            <Route path='/articles' element={<ArticlePage />} />
+            <Route path='/articles/detail' element={<ArticleDetailPage />} />
 
             <Route path='/rewards' element={<RewardPage />} />
             <Route path='/rewards/my' element={<MyRewardsPage />} />

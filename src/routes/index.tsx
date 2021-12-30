@@ -38,7 +38,9 @@ const HomePage = (props: Props) => {
       title: 'Manfaat',
       desc: 'Apa saja manfaat memilah sampah',
       buttonText: 'Cari Tahu Manfaatnya',
-      buttonAction: () => {},
+      buttonAction: () => {
+        navigate('/articles');
+      },
       image: dummyImg,
     },
   ];
