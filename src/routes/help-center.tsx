@@ -61,7 +61,7 @@ const HelpCenterPage = (props: Props) => {
         className='w-full rounded-xl p-2 text-gray-800 border border-green-800'
         placeholder='Anda bisa ketik disini'></textarea>
 
-      <div className='p-4 flex justify-between items-end mt-20'>
+      <div className='p-4 flex justify-between items-end mt-12'>
         <div>
           <span className='block font-bold'>Call Center</span>
           <span className='block'>
