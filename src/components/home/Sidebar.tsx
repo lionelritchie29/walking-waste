@@ -3,11 +3,14 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@heroicons/react/solid';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { USER_KEY } from '../../constant';
 import { UserContext } from '../../providers/UserProvider';
 import { useNavigate } from 'react-router-dom';
+import { Else, If, Then } from 'react-if';
+import Toggle from 'react-toggle';
+import 'react-toggle/style.css';
 
 interface Props {
   isOpen: boolean;
@@ -16,6 +19,7 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   const [user, setUser] = useContext(UserContext);
+  const [notifToggle, setNotifToggle] = useState(false);
   const navigate = useNavigate();
 
   const links = [
@@ -40,6 +44,30 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       to: '/help-center',
     },
   ];
+
+  const notify = (e: any) => {
+    if (e.target.checked) {
+      console.log('Checked!');
+      if (!('Notification' in window)) {
+        alert('This browser does not support desktop notification');
+      } else if (Notification.permission === 'granted') {
+        console.log(Notification);
+        console.log('Granted!');
+        var notification = new Notification('Poin dan Reward', {
+          body: 'Selamat! Anda berhasil mendapatkan 45 poin! Segera tukarkan dengan hadiah menarik lainnya!',
+        });
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(function (permission) {
+          if (permission === 'granted') {
+            console.log('Granted!');
+            var notification = new Notification('Poin dan Reward', {
+              body: 'Selamat! Anda berhasil mendapatkan 45 poin! Segera tukarkan dengan hadiah menarik lainnya!',
+            });
+          }
+        });
+      }
+    }
+  };
 
   return (
     <div
@@ -74,16 +102,36 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
       <div className='grid grid-cols-1 mt-10'>
         {links.map((link) => (
-          <Link key={link.title} to={link.to}>
-            <div
-              className='text-white text-xl py-6 px-12 flex justify-between items-center'
-              style={{ borderBottom: '1px solid #444' }}>
-              {link.title}
-              <div>
-                <ChevronRightIcon className='font-normal w-8 h-8' />
-              </div>
-            </div>
-          </Link>
+          <div key={link.title}>
+            <If condition={link.title === 'Notifikasi'}>
+              <Then>
+                <div
+                  className='text-white text-xl py-6 px-12 flex justify-between items-center'
+                  style={{ borderBottom: '1px solid #444' }}>
+                  {link.title}
+                  <div>
+                    <Toggle
+                      id='cheese-status'
+                      defaultChecked={notifToggle}
+                      onChange={notify}
+                    />
+                  </div>
+                </div>
+              </Then>
+              <Else>
+                <Link to={link.to}>
+                  <div
+                    className='text-white text-xl py-6 px-12 flex justify-between items-center'
+                    style={{ borderBottom: '1px solid #444' }}>
+                    {link.title}
+                    <div>
+                      <ChevronRightIcon className='font-normal w-8 h-8' />
+                    </div>
+                  </div>
+                </Link>
+              </Else>
+            </If>
+          </div>
         ))}
       </div>
 
