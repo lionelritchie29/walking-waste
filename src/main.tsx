@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -19,44 +19,47 @@ import DonateDonePage from './routes/donate/done';
 import ArticlePage from './routes/articles';
 import ArticleDetailPage from './routes/articles/detail';
 import { ToastContainer } from 'react-toastify';
+import NotificationProvider from './providers/NotificationProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ToastContainer />
-        <Routes>
-          <Route path='/' element={<App />}>
-            <Route index element={<HomePage />} />
+        <NotificationProvider>
+          <ToastContainer />
+          <Routes>
+            <Route path='/' element={<App />}>
+              <Route index element={<HomePage />} />
 
-            <Route path='/donation-step' element={<DonationStepPage />} />
+              <Route path='/donation-step' element={<DonationStepPage />} />
 
-            <Route path='/donate' element={<DonatePage />} />
-            <Route path='/donate/active' element={<DonateActivePage />} />
-            <Route path='/donate/done' element={<DonateDonePage />} />
+              <Route path='/donate' element={<DonatePage />} />
+              <Route path='/donate/active' element={<DonateActivePage />} />
+              <Route path='/donate/done' element={<DonateDonePage />} />
 
-            <Route path='/articles' element={<ArticlePage />} />
-            <Route path='/articles/:slug' element={<ArticleDetailPage />} />
+              <Route path='/articles' element={<ArticlePage />} />
+              <Route path='/articles/:slug' element={<ArticleDetailPage />} />
 
-            <Route path='/rewards' element={<RewardPage />} />
-            <Route path='/rewards/my' element={<MyRewardsPage />} />
+              <Route path='/rewards' element={<RewardPage />} />
+              <Route path='/rewards/my' element={<MyRewardsPage />} />
 
-            <Route path='/saved-address' element={<SavedAddressPage />} />
-            <Route path='/history' element={<HistoryPage />} />
-            <Route path='/help-center' element={<HelpCenterPage />} />
+              <Route path='/saved-address' element={<SavedAddressPage />} />
+              <Route path='/history' element={<HistoryPage />} />
+              <Route path='/help-center' element={<HelpCenterPage />} />
 
-            <Route
-              path='*'
-              element={
-                <main style={{ padding: '1rem' }}>
-                  <p>There's nothing here!</p>
-                </main>
-              }
-            />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
-          </Route>
-        </Routes>
+              <Route
+                path='*'
+                element={
+                  <main style={{ padding: '1rem' }}>
+                    <p>There's nothing here!</p>
+                  </main>
+                }
+              />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route path='/login' element={<LoginPage />} />
+            </Route>
+          </Routes>
+        </NotificationProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,

@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { Else, If, Then } from 'react-if';
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
+import { NotificationContext } from '../../providers/NotificationProvider';
 
 interface Props {
   isOpen: boolean;
@@ -19,6 +20,7 @@ interface Props {
 
 const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   const [user, setUser] = useContext(UserContext);
+  const [showNotif, setShowNotif] = useContext(NotificationContext);
   const [notifToggle, setNotifToggle] = useState(false);
   const navigate = useNavigate();
 
@@ -66,6 +68,13 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
           }
         });
       }
+
+      setShowNotif(true);
+      setTimeout(() => {
+        setShowNotif(false);
+      }, 3000);
+    } else {
+      setShowNotif(false);
     }
   };
 

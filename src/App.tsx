@@ -2,11 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import DummyNotification from './components/DummyNotification';
 import { USER_KEY } from './constant';
+import { NotificationContext } from './providers/NotificationProvider';
 import { UserContext } from './providers/UserProvider';
 
 function App() {
   const [user, setUser] = useContext(UserContext);
+  const [showNotif, setShowNotif] = useContext(NotificationContext);
   const navigate = useNavigate();
 
   const [dimensions, setDimensions] = useState({
@@ -55,11 +58,14 @@ function App() {
     );
 
   return (
-    <main className='bg-gray-200 md:min-h-screen'>
-      <div className='max-w-md mx-auto'>
-        <Outlet />
-      </div>
-    </main>
+    <>
+      <DummyNotification show={showNotif} setShow={setShowNotif} />
+      <main className='bg-gray-200 md:min-h-screen'>
+        <div className='max-w-md mx-auto'>
+          <Outlet />
+        </div>
+      </main>
+    </>
   );
 }
 
