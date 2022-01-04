@@ -346,9 +346,9 @@ const RegisterPage = (props: Props) => {
         </Else>
       </If>
 
-      <div className='absolute bottom-0 left-0 text-gray-800 px-4 pb-10'>
-        <span className='block '>Suda punya akun?</span>
-        <Link className='text-2xl underline -mt-2 block' to='/login'>
+      <div className='absolute bottom-0 left-0 text-gray-800 px-4 pb-6'>
+        <span className='block text-xs'>Suda punya akun?</span>
+        <Link className='text-xl underline -mt-2 block' to='/login'>
           Masuk
         </Link>
       </div>

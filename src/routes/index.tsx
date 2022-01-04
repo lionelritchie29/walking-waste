@@ -48,10 +48,10 @@ const HomePage = (props: Props) => {
   ];
 
   return (
-    <>
+    <div className='relative'>
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       <section className='bg-custom-green pt-20'>
-        <div className='bg-white rounded-t-2xl px-4 pt-4 h-full md:min-h-screen'>
+        <div className='bg-white rounded-t-2xl px-4 pt-4 pb-8 h-full md:min-h-screen'>
           <div className='flex justify-between'>
             <MenuIcon
               onClick={() => {
@@ -80,7 +80,7 @@ const HomePage = (props: Props) => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

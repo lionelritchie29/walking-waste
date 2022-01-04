@@ -101,9 +101,9 @@ const LoginPage = (props: Props) => {
         </button>
       </form>
 
-      <div className='absolute bottom-0 left-0 text-white px-4 pb-10'>
-        <span className='block text-gray-100'>Belum punya akun?</span>
-        <Link className='text-2xl underline -mt-2 block' to='/register'>
+      <div className='absolute bottom-0 left-0 text-white px-4 pb-6'>
+        <span className='block text-gray-100 text-sm'>Belum punya akun?</span>
+        <Link className='text-xl underline -mt-2 block' to='/register'>
           Daftar
         </Link>
       </div>

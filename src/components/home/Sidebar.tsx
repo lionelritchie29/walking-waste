@@ -49,26 +49,6 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
   const notify = (e: any) => {
     if (e.target.checked) {
-      // console.log('Checked!');
-      // if (!('Notification' in window)) {
-      //   alert('This browser does not support desktop notification');
-      // } else if (Notification.permission === 'granted') {
-      //   console.log(Notification);
-      //   console.log('Granted!');
-      //   var notification = new Notification('Poin dan Reward', {
-      //     body: 'Selamat! Anda berhasil mendapatkan 45 poin! Segera tukarkan dengan hadiah menarik lainnya!',
-      //   });
-      // } else if (Notification.permission !== 'denied') {
-      //   Notification.requestPermission().then(function (permission) {
-      //     if (permission === 'granted') {
-      //       console.log('Granted!');
-      //       var notification = new Notification('Poin dan Reward', {
-      //         body: 'Selamat! Anda berhasil mendapatkan 45 poin! Segera tukarkan dengan hadiah menarik lainnya!',
-      //       });
-      //     }
-      //   });
-      // }
-
       setShowNotif(true);
       setTimeout(() => {
         setShowNotif(false);
@@ -80,7 +60,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
   return (
     <div
-      className={`absolute top-0 left-0 w-full h-screen bg-custom-green transition-all duration-200 ${
+      className={`absolute top-0 left-0 w-full min-h-screen h-full bg-custom-green transition-all duration-200 ${
         isOpen ? '' : '-translate-x-full'
       }`}>
       <div>
@@ -93,7 +73,7 @@ const Sidebar: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       <div className='flex mt-20 justify-center items-center'>
         <div>
           <img
-            className='w-28 ring-4 ring-green-900 rounded-full'
+            className='w-28 ring-4 ring-green-900 rounded-full object-contain'
             src='https://i.pravatar.cc/300'
             alt=''
           />

@@ -19,7 +19,7 @@ const DonationStepDetail = ({
 }: Props) => {
   return (
     <div
-      className={`absolute bg-custom-green top-0 left-0 h-screen w-full z-20 transition-all duration-200 ${
+      className={`absolute bg-custom-green top-0 left-0 h-full min-h-screen w-full z-20 transition-all duration-200 ${
         isOpen ? '' : '-translate-x-full'
       }`}>
       <div className='absolute top-6 left-4 text-white'>

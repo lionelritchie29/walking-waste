@@ -81,7 +81,7 @@ const DonationStepPage = (props: Props) => {
   };
 
   return (
-    <div className='bg-white pt-6'>
+    <div className='bg-white pt-6 relative'>
       <DonationStepDetail
         setIsOpen={setIsOpen}
         isOpen={isOpen}
@@ -126,7 +126,7 @@ const DonationStepPage = (props: Props) => {
           ))}
         </div>
 
-        <Link to='/' className='flex justify-center w-2/3 mx-auto mt-6'>
+        <Link to='/' className='flex justify-center w-2/3 mx-auto mt-6 pb-6'>
           <button
             ref={understandBtn}
             className='rounded-full px-4 py-2 w-full font-bold text-white'
