@@ -34,7 +34,7 @@ const DonationStep: React.FC<Props> = ({ title, color, desc, image, idx }) => {
         </div>
 
         <div
-          className={`w-11/12 mx-auto h-48 ${
+          className={`w-11/12 mx-auto ${
             idx % 2 === 0 ? 'mt-16' : 'mb-16'
           }`}>
           <img src={image} className='w-full' alt={title} />

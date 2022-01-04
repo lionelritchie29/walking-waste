@@ -50,9 +50,9 @@ function App() {
 
   if (dimensions.width > 512)
     return (
-      <div className='flex flex-col justify-center items-center h-screen text-xs w-1/2 mx-auto'>
+      <div className='flex flex-col justify-center items-center h-screen text-sm w-1/2 mx-auto'>
         This web app can only be opened on screen less than 512px (mobile only).
-        Resize your browser if you are on a web browser and refresh the page!
+        Resize your browser if you are on a web browser!
         <div className='mt-4'>Sorry for the inconvenience 😊</div>
       </div>
     );
