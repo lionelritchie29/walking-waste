@@ -26,11 +26,13 @@ const RewardCard = ({ title, desc, image, active }: Props) => {
         </div>
       </div>
 
-      <div className='text-right mr-3'>
-        <button className='font-bold text-custom-blue mt-1 text-lg'>
-          Gunakan Sekarang
-        </button>
-      </div>
+      {active && (
+        <div className='text-right mr-3'>
+          <button className='font-bold text-custom-blue mt-1 text-lg'>
+            Gunakan Sekarang
+          </button>
+        </div>
+      )}
     </div>
   );
 };
