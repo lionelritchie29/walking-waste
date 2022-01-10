@@ -29,14 +29,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (dimensions.width > 512) {
-      alert(
-        'This web app is suitable for mobile phone only, if you are on a web browser, than you must open resize the browser width below 512px',
-      );
-    }
-  }, []);
-
-  useEffect(() => {
     configAuth();
   }, []);
 
